@@ -23,16 +23,17 @@
 // #define LINO_BASE MECANUM               // Mecanum drive robot
 
 //uncomment the motor driver you're using
-#define USE_GENERIC_2_IN_MOTOR_DRIVER      // Motor drivers with 2 Direction Pins(INA, INB) and 1 PWM(ENABLE) pin ie. L298, L293, VNH5019
+// #define USE_GENERIC_2_IN_MOTOR_DRIVER      // Motor drivers with 2 Direction Pins(INA, INB) and 1 PWM(ENABLE) pin ie. L298, L293, VNH5019
 // #define USE_GENERIC_1_IN_MOTOR_DRIVER   // Motor drivers with 1 Direction Pin(INA) and 1 PWM(ENABLE) pin.
 // #define USE_BTS7960_MOTOR_DRIVER        // BTS7970 Motor Driver
 // #define USE_ESC_MOTOR_DRIVER            // Motor ESC for brushless motors
+#define USE_BLDC_IN_MOTOR_DRIVER   // Motor with BLDC Drivers e.g BLD-330B
 
 //uncomment the IMU you're using
-#define USE_GY85_IMU
+// #define USE_GY85_IMU
 // #define USE_MPU6050_IMU
 // #define USE_MPU9150_IMU
-// #define USE_MPU9250_IMU
+#define USE_MPU9250_IMU
 
 #define K_P 0.6                             // P constant
 #define K_I 0.8                             // I constant
@@ -47,17 +48,17 @@ ROBOT ORIENTATION
 */
 
 //define your robot' specs here
-#define MOTOR_MAX_RPM 140                   // motor's max RPM          
+#define MOTOR_MAX_RPM 330                   // motor's max RPM          
 #define MAX_RPM_RATIO 0.85                  // max RPM allowed for each MAX_RPM_ALLOWED = MOTOR_MAX_RPM * MAX_RPM_RATIO          
 #define MOTOR_OPERATING_VOLTAGE 24          // motor's operating voltage (used to calculate max RPM)
-#define MOTOR_POWER_MAX_VOLTAGE 12          // max voltage of the motor's power source (used to calculate max RPM)
-#define MOTOR_POWER_MEASURED_VOLTAGE 12     // current voltage reading of the power connected to the motor (used for calibration)
-#define COUNTS_PER_REV1 144000              // wheel1 encoder's no of ticks per rev
-#define COUNTS_PER_REV2 144000              // wheel2 encoder's no of ticks per rev
-#define COUNTS_PER_REV3 144000              // wheel3 encoder's no of ticks per rev
-#define COUNTS_PER_REV4 144000              // wheel4 encoder's no of ticks per rev
+#define MOTOR_POWER_MAX_VOLTAGE 24          // max voltage of the motor's power source (used to calculate max RPM)
+#define MOTOR_POWER_MEASURED_VOLTAGE 24     // current voltage reading of the power connected to the motor (used for calibration)
+#define COUNTS_PER_REV1 8255             // wheel1 encoder's no of ticks per rev
+#define COUNTS_PER_REV2 8255              // wheel2 encoder's no of ticks per rev
+#define COUNTS_PER_REV3 8255              // wheel3 encoder's no of ticks per rev
+#define COUNTS_PER_REV4 8255              // wheel4 encoder's no of ticks per rev
 #define WHEEL_DIAMETER 0.152                // wheel's diameter in meters
-#define LR_WHEELS_DISTANCE 0.271            // distance between left and right wheels
+#define LR_WHEELS_DISTANCE 0.30            // distance between left and right wheels
 #define PWM_BITS 10                          // PWM Resolution of the microcontroller
 #define PWM_FREQUENCY 20000                 // PWM Frequency
 
@@ -68,23 +69,29 @@ ROBOT ORIENTATION
 #define MOTOR4_ENCODER_INV false 
 
 // INVERT MOTOR DIRECTIONS
-#define MOTOR1_INV false
-#define MOTOR2_INV false
+#define MOTOR1_INV true
+#define MOTOR2_INV true
 #define MOTOR3_INV false
 #define MOTOR4_INV false
 
-// ENCODER PINS
-#define MOTOR1_ENCODER_A 14
-#define MOTOR1_ENCODER_B 15 
+// NEW PINS
+#define MOTORS_ON 16
+#define MOTOR1_ENABLE 2
+#define MOTOR2_ENABLE 14
+#define BATTERY_V 15
 
-#define MOTOR2_ENCODER_A 11
-#define MOTOR2_ENCODER_B 12 
+// ENCODER PINS
+#define MOTOR1_ENCODER_A 12
+#define MOTOR1_ENCODER_B 11
+
+#define MOTOR2_ENCODER_A 9
+#define MOTOR2_ENCODER_B 10 
 
 #define MOTOR3_ENCODER_A 17
 #define MOTOR3_ENCODER_B 16 
 
-#define MOTOR4_ENCODER_A 9
-#define MOTOR4_ENCODER_B 10
+#define MOTOR4_ENCODER_A 17
+#define MOTOR4_ENCODER_B 16
 
 // MOTOR PINS
 #ifdef USE_GENERIC_2_IN_MOTOR_DRIVER
@@ -170,5 +177,28 @@ ROBOT ORIENTATION
   #define PWM_MAX 400
   #define PWM_MIN -PWM_MAX
 #endif
+
+#ifdef USE_BLDC_IN_MOTOR_DRIVER
+   #define MOTOR1_PWM 3 
+  #define MOTOR1_IN_A 0
+  #define MOTOR1_IN_B -1 //DON'T TOUCH THIS! This is just a placeholder
+  #define MOTOR1_IN_BRAKE 1
+ 
+  #define MOTOR2_PWM 22
+  #define MOTOR2_IN_A 23
+  #define MOTOR2_IN_B -1 //DON'T TOUCH THIS! This is just a placeholder
+  #define MOTOR2_IN_BRAKE 21
+
+  #define MOTOR3_PWM 23
+  #define MOTOR3_IN_A 23
+  #define MOTOR3_IN_B -1 //DON'T TOUCH THIS! This is just a placeholder
+
+  #define MOTOR4_PWM 4
+  #define MOTOR4_IN_A 3
+  #define MOTOR4_IN_B -1 //DON'T TOUCH THIS! This is just a placeholder
+
+  #define PWM_MAX pow(2, PWM_BITS) - 1
+  #define PWM_MIN -PWM_MAX
+#endif 
 
 #endif
