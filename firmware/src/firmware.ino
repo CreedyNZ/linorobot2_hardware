@@ -98,6 +98,22 @@ void setup()
         }
     }
     
+    //Nucky specific
+    pinMode(MOTORS_ON, OUTPUT);
+    pinMode(AUX1, OUTPUT);
+    pinMode(AUX2, OUTPUT);
+    pinMode(AUX3, OUTPUT);
+    digitalWrite(MOTORS_ON, LOW);
+    pinMode(MOTOR1_ENABLE, OUTPUT);
+    pinMode(MOTOR2_ENABLE, OUTPUT);
+    pinMode(MOTOR1_IN_BRAKE, OUTPUT);
+    pinMode(MOTOR2_IN_BRAKE, OUTPUT); 
+    digitalWrite(MOTOR1_ENABLE, LOW);
+    digitalWrite(MOTOR2_ENABLE, LOW);
+    digitalWrite(MOTOR1_IN_BRAKE, LOW);
+    digitalWrite(MOTOR2_IN_BRAKE, LOW);
+    digitalWrite(MOTORS_ON, HIGH);
+    
     micro_ros_init_successful = false;
     set_microros_transports();
 }
