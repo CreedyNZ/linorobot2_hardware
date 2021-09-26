@@ -181,13 +181,11 @@ ROBOT ORIENTATION
 #ifdef USE_BLDC_IN_MOTOR_DRIVER
    #define MOTOR1_PWM 3 
   #define MOTOR1_IN_A 0
-  #define MOTOR1_IN_B -1 //DON'T TOUCH THIS! This is just a placeholder
-  #define MOTOR1_IN_BRAKE 1
+  #define MOTOR1_IN_B 1
  
   #define MOTOR2_PWM 22
   #define MOTOR2_IN_A 23
-  #define MOTOR2_IN_B -1 //DON'T TOUCH THIS! This is just a placeholder
-  #define MOTOR2_IN_BRAKE 21
+  #define MOTOR2_IN_B 21 
 
   #define MOTOR3_PWM 23
   #define MOTOR3_IN_A 23
