@@ -222,6 +222,7 @@ class BLDC: public MotorInterface
     private:
         int in_pin_;
         int pwm_pin_;
+        int in_brake_;
 
     protected:
         void forward(int pwm) override
@@ -237,13 +238,15 @@ class BLDC: public MotorInterface
         }
 
     public:
-        BLDC(float pwm_frequency, int pwm_bits, bool invert, int pwm_pin, int in_pin, int unused=-1): 
+        BLDC(float pwm_frequency, int pwm_bits, bool invert, int pwm_pin, int in_pin, int in_brake): 
             MotorInterface(invert),
             in_pin_(in_pin),
             pwm_pin_(pwm_pin)
         {
             pinMode(in_pin_, OUTPUT);
+            pinMode(in_brake_, OUTPUT);
             pinMode(pwm_pin_, OUTPUT);
+            digitalWrite(in_brake_, LOW);
 
             if(pwm_frequency > 0)
             {
@@ -258,6 +261,7 @@ class BLDC: public MotorInterface
         void brake() override
         {
             analogWrite(pwm_pin_, 0);
+            digitalWrite(in_brake_, HIGH);
         }
 };
 
