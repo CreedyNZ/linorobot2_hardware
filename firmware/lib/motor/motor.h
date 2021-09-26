@@ -40,4 +40,9 @@
 #endif
 
 
+#ifdef USE_BLDC_IN_MOTOR_DRIVER
+    // pass your built in class to Motor macro
+    #define Motor BLDC
+#endif
+
 #endif
