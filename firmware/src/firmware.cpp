@@ -532,6 +532,8 @@ void setup()
     motor3_controller.begin();
     motor4_controller.begin();
     bool imu_ok = imu.init();
+    pinMode(ENABLE_PIN_, OUTPUT);
+    setLevel(ENABLE_PIN_, LOW);
     if (!imu_ok) // take IMU failure as fatal
     {
         Serial.println("IMU init failed");
