@@ -207,37 +207,61 @@ class BTS7960: public MotorInterface
 class ESC: public MotorInterface
 {
     private:
+        int in_pin_;
+        int br_pin_;
         int pwm_pin_;
+        int pwm_bits_;
+        float pwm_frequiency_;
+
+
     protected:
-        void forward(int pwm) override
+        void forward(int pwm) 
+override
         {
-            if (pwm_pin_ < 0) return;
-            setMicro(pwm_pin_, 1500 + pwm);
+            if (pwm_pin_ < 0) 
+        return;
+            setLevel(in_pin_,HIGH);
+            setLevel(br_pin_,LOW);
+            setPWM(pwm_pin_,abs(pwm));
+
         }
 
-        void reverse(int pwm) override
+        void reverse(int pwm) 
+override
         {
-        if (pwm_pin_ < 0) return;
-            setMicro(pwm_pin_, 1500 + pwm);
+        if (in_pin_ < 0) 
+        return;
+            setLevel(in_pin_,LOW);
+            setLevel(br_pin_,LOW);
+            setPWM(pwm_pin_,abs(pwm));
         }
 
     public:
-        ESC(float pwm_frequency, int pwm_bits, bool invert, int pwm_pin, int unused=-1, int unused2=-1):
+        ESC(float pwm_frequency, int pwm_bits, bool invert, int pwm_pin, int in_pin, int br_pin):
             MotorInterface(invert),
+
+            pwm_frequency_(pwm_frequency),
+            in_pin_(in_pin),
+            br_pin_(br_pin),
             pwm_pin_(pwm_pin) {}
 
         void begin()
         {
             if (pwm_pin_ < 0) return;
-            setupPwm(pwm_pin_, SERVO_FREQ, SERVO_BITS);
+            pinMode(in_pin_, OUTPUT);
+            pinMode(br_pin_, OUTPUT);
+            setupPwm(pwm_pin_, pwm_frequency_, pwm_bits_);
             //ensure that the motor is in neutral state during bootup
-            setMicro(pwm_pin_, 1500);
+            setPwm(pwm_pin_, 0);
+            setLevel(br_pin_,LOW);
         }
 
         void brake() override
         {
-            if (pwm_pin_ < 0) return;
-            setMicro(pwm_pin_, 1500);
+            if (in_pin_ < 0) return;
+            
+               setPwm(pwm_pin_, 0);
+               setLevel(br_pin_,HIGH);
         }
 };
 
