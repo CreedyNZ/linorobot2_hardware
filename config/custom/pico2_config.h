@@ -25,12 +25,12 @@
 //uncomment the motor driver you're using
 // #define USE_GENERIC_2_IN_MOTOR_DRIVER      // Motor drivers with 2 Direction Pins(INA, INB) and 1 PWM(ENABLE) pin ie. L298, L293, VNH5019
 // #define USE_GENERIC_1_IN_MOTOR_DRIVER   // Motor drivers with 1 Direction Pin(INA) and 1 PWM(ENABLE) pin.
-#define USE_BTS7960_MOTOR_DRIVER        // BTS7970 Motor Driver using A4950 (<40V) module or DRV8833 (<10V)
-// #define USE_ESC_MOTOR_DRIVER            // Motor ESC for brushless motors
+// #define USE_BTS7960_MOTOR_DRIVER        // BTS7970 Motor Driver using A4950 (<40V) module or DRV8833 (<10V)
+#define USE_ESC_MOTOR_DRIVER            // Motor ESC for brushless motors
 
 //uncomment the IMU you're using
 // #define USE_GY85_IMU
-// #define USE_MPU6050_IMU
+#define USE_MPU6050_IMU
 // #define USE_MPU9150_IMU
 // #define USE_MPU9250_IMU
 // #define USE_QMI8658_IMU
@@ -93,11 +93,11 @@ ROBOT ORIENTATION
 
 // ENCODER PINS
 // Note: encoder pins must be consecutive (e.g. 2 and 3, 10 and 11 etc.)
-#define MOTOR1_ENCODER_A  6
-#define MOTOR1_ENCODER_B  7
+#define MOTOR1_ENCODER_A  2
+#define MOTOR1_ENCODER_B  3
 
-#define MOTOR2_ENCODER_A 10
-#define MOTOR2_ENCODER_B 11
+#define MOTOR2_ENCODER_A 6
+#define MOTOR2_ENCODER_B 7
 
 #define MOTOR3_ENCODER_A 20
 #define MOTOR3_ENCODER_B 21
@@ -255,3 +255,4 @@ const int16_t ADC_LUT[4096] = { /* insert adc_calibrate data here */ };
 #endif
 
 #endif
+
