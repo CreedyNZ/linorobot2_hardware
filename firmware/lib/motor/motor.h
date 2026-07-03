@@ -39,5 +39,10 @@
     #define Motor ESC
 #endif
 
+#ifdef USE_DF_MOTOR_DRIVER
+    // pass your built in class to Motor macro
+    #define Motor DF
+#endif
+
 
 #endif
