@@ -27,7 +27,7 @@
 // #define USE_GENERIC_1_IN_MOTOR_DRIVER   // Motor drivers with 1 Direction Pin(INA) and 1 PWM(ENABLE) pin.
 // #define USE_BTS7960_MOTOR_DRIVER        // BTS7970 Motor Driver using A4950 (<40V) module or DRV8833 (<10V)
 // #define USE_ESC_MOTOR_DRIVER            // Motor ESC for brushless motors
-#define USE_ESC_DF_MOTOR_DRIVER
+#define USE_DF_MOTOR_DRIVER
 
 //uncomment the IMU you're using
 // #define USE_GY85_IMU
@@ -191,7 +191,7 @@ ROBOT ORIENTATION
   #define PWM_MIN -PWM_MAX
 #endif
 
-#ifdef USE_ESC_DF_MOTOR_DRIVER
+#ifdef USE_DF_MOTOR_DRIVER
   #define MOTOR_DRIVER DRI0054
   #define I2C_SDA_PIN 0
   #define I2C_SCL_PIN 1
