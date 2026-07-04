@@ -27,7 +27,7 @@
 // #define USE_GENERIC_1_IN_MOTOR_DRIVER   // Motor drivers with 1 Direction Pin(INA) and 1 PWM(ENABLE) pin.
 // #define USE_BTS7960_MOTOR_DRIVER        // BTS7970 Motor Driver using A4950 (<40V) module or DRV8833 (<10V)
 // #define USE_ESC_MOTOR_DRIVER            // Motor ESC for brushless motors
-#define DF_ESC_MOTOR_DRIVER
+#define USE_DRI0054_MOTOR_DRIVER           // DFRobot DRI0054 I2C motor driver board
 
 //uncomment the IMU you're using
 // #define USE_GY85_IMU
@@ -191,24 +191,24 @@ ROBOT ORIENTATION
   #define PWM_MIN -PWM_MAX
 #endif
 
-#ifdef USE_DF_MOTOR_DRIVER
-  #define MOTOR1_PWM 12
+#ifdef USE_DRI0054_MOTOR_DRIVER
+  #define MOTOR1_PWM 1 // logical DRI0054 motor channel, not a Pico GPIO pin
   #define MOTOR1_IN_A -1 //DON'T TOUCH THIS! This is just a placeholder
   #define MOTOR1_IN_B -1 //DON'T TOUCH THIS! This is just a placeholder
 
-  #define MOTOR2_PWM 13
+  #define MOTOR2_PWM 2 // logical DRI0054 motor channel, not a Pico GPIO pin
   #define MOTOR2_IN_A -1 //DON'T TOUCH THIS! This is just a placeholder
   #define MOTOR2_IN_B -1 //DON'T TOUCH THIS! This is just a placeholder
 
-  #define MOTOR3_PWM 14
+  #define MOTOR3_PWM 3 // logical DRI0054 motor channel, not a Pico GPIO pin
   #define MOTOR3_IN_A -1 //DON'T TOUCH THIS! This is just a placeholder
   #define MOTOR3_IN_B -1 //DON'T TOUCH THIS! This is just a placeholder
 
-  #define MOTOR4_PWM 15
+  #define MOTOR4_PWM 4 // logical DRI0054 motor channel, not a Pico GPIO pin
   #define MOTOR4_IN_A -1 //DON'T TOUCH THIS! This is just a placeholder
   #define MOTOR4_IN_B -1 //DON'T TOUCH THIS! This is just a placeholder
 
-  #define PWM_MAX 400
+  #define PWM_MAX 255
   #define PWM_MIN -PWM_MAX
 #endif
 
