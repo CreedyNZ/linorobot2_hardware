@@ -18,15 +18,16 @@
 #define LED_PIN LED_BUILTIN //used for debugging status
 
 //uncomment the base you're building
-#define LINO_BASE DIFFERENTIAL_DRIVE       // 2WD and Tracked robot w/ 2 motors
+// #define LINO_BASE DIFFERENTIAL_DRIVE       // 2WD and Tracked robot w/ 2 motors
 // #define LINO_BASE SKID_STEER            // 4WD robot
-// #define LINO_BASE MECANUM               // Mecanum drive robot
+#define LINO_BASE MECANUM               // Mecanum drive robot
 
 //uncomment the motor driver you're using
 // #define USE_GENERIC_2_IN_MOTOR_DRIVER      // Motor drivers with 2 Direction Pins(INA, INB) and 1 PWM(ENABLE) pin ie. L298, L293, VNH5019
 // #define USE_GENERIC_1_IN_MOTOR_DRIVER   // Motor drivers with 1 Direction Pin(INA) and 1 PWM(ENABLE) pin.
-#define USE_BTS7960_MOTOR_DRIVER        // BTS7970 Motor Driver using A4950 (<40V) module or DRV8833 (<10V)
+// #define USE_BTS7960_MOTOR_DRIVER        // BTS7970 Motor Driver using A4950 (<40V) module or DRV8833 (<10V)
 // #define USE_ESC_MOTOR_DRIVER            // Motor ESC for brushless motors
+#define DF_ESC_MOTOR_DRIVER
 
 //uncomment the IMU you're using
 // #define USE_GY85_IMU
