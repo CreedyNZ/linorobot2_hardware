@@ -17,6 +17,7 @@
 
 // include the header of your new driver here similar to default_motor.h
 #include "default_motor.h"
+#include "dri0054_motor.h"
 
 // now you can create a config constant that you can use in lino_base_config.h
 #ifdef USE_GENERIC_2_IN_MOTOR_DRIVER
@@ -44,5 +45,9 @@
     #define Motor DF
 #endif
 
+#ifdef USE_DRI0054_MOTOR_DRIVER
+    // pass your built in class to Motor macro
+    #define Motor DRI0054Motor
+#endif
 
 #endif

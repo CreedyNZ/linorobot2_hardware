@@ -241,41 +241,4 @@ class ESC: public MotorInterface
         }
 };
 
-class ESC: public MotorInterface
-{
-    private:
-        int pwm_pin_;
-    protected:
-        void forward(int pwm) override
-        {
-            if (pwm_pin_ < 0) return;
-            setMicro(pwm_pin_, 1500 + pwm);
-        }
-
-        void reverse(int pwm) override
-        {
-        if (pwm_pin_ < 0) return;
-            setMicro(pwm_pin_, 1500 + pwm);
-        }
-
-    public:
-        ESC(float pwm_frequency, int pwm_bits, bool invert, int pwm_pin, int unused=-1, int unused2=-1):
-            MotorInterface(invert),
-            pwm_pin_(pwm_pin) {}
-
-        void begin()
-        {
-            if (pwm_pin_ < 0) return;
-            setupPwm(pwm_pin_, SERVO_FREQ, SERVO_BITS);
-            //ensure that the motor is in neutral state during bootup
-            setMicro(pwm_pin_, 1500);
-        }
-
-        void brake() override
-        {
-            if (pwm_pin_ < 0) return;
-            setMicro(pwm_pin_, 1500);
-        }
-};
-
 #endif
