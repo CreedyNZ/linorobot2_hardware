@@ -191,6 +191,27 @@ ROBOT ORIENTATION
   #define PWM_MIN -PWM_MAX
 #endif
 
+#ifdef USE_DF_MOTOR_DRIVER
+  #define MOTOR1_PWM 12
+  #define MOTOR1_IN_A -1 //DON'T TOUCH THIS! This is just a placeholder
+  #define MOTOR1_IN_B -1 //DON'T TOUCH THIS! This is just a placeholder
+
+  #define MOTOR2_PWM 13
+  #define MOTOR2_IN_A -1 //DON'T TOUCH THIS! This is just a placeholder
+  #define MOTOR2_IN_B -1 //DON'T TOUCH THIS! This is just a placeholder
+
+  #define MOTOR3_PWM 14
+  #define MOTOR3_IN_A -1 //DON'T TOUCH THIS! This is just a placeholder
+  #define MOTOR3_IN_B -1 //DON'T TOUCH THIS! This is just a placeholder
+
+  #define MOTOR4_PWM 15
+  #define MOTOR4_IN_A -1 //DON'T TOUCH THIS! This is just a placeholder
+  #define MOTOR4_IN_B -1 //DON'T TOUCH THIS! This is just a placeholder
+
+  #define PWM_MAX 400
+  #define PWM_MIN -PWM_MAX
+#endif
+
 #define AGENT_IP { 192, 168, 1, 100 }  // eg IP of the desktop computer
 #define AGENT_PORT 8888
 // Enable WiFi with null terminated list of multiple APs SSID and password
