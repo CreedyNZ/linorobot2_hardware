@@ -6,7 +6,7 @@
 #include "motor_interface.h"
 
 #ifndef DRI0054_I2C_ADDRESS
-#define DRI0054_I2C_ADDRESS 0x40
+#define DRI0054_I2C_ADDRESS 0x60
 #endif
 
 // DFRobot DRI0054 uses a PCA9685 over I2C. Each DC motor has one speed
