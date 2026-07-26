@@ -18,23 +18,23 @@
 #define LED_PIN LED_BUILTIN //used for debugging status
 
 //uncomment the base you're building
-#define LINO_BASE DIFFERENTIAL_DRIVE       // 2WD and Tracked robot w/ 2 motors
+//#define LINO_BASE DIFFERENTIAL_DRIVE       // 2WD and Tracked robot w/ 2 motors
 // #define LINO_BASE SKID_STEER            // 4WD robot
-// #define LINO_BASE MECANUM               // Mecanum drive robot
+#define LINO_BASE MECANUM               // Mecanum drive robot
 
 //uncomment the motor driver you're using
-// #define USE_GENERIC_2_IN_MOTOR_DRIVER      // Motor drivers with 2 Direction Pins(INA, INB) and 1 PWM(ENABLE) pin ie. L298, L293, VNH5019
+#define USE_GENERIC_2_IN_MOTOR_DRIVER      // Motor drivers with 2 Direction Pins(INA, INB) and 1 PWM(ENABLE) pin ie. L298, L293, VNH5019
 // #define USE_GENERIC_1_IN_MOTOR_DRIVER   // Motor drivers with 1 Direction Pin(INA) and 1 PWM(ENABLE) pin.
-#define USE_BTS7960_MOTOR_DRIVER        // BTS7970 Motor Driver using A4950 (<40V) module or DRV8833 (<10V)
+// #define USE_BTS7960_MOTOR_DRIVER        // BTS7970 Motor Driver using A4950 (<40V) module or DRV8833 (<10V)
 // #define USE_ESC_MOTOR_DRIVER            // Motor ESC for brushless motors
 
 //uncomment the IMU you're using
 // #define USE_GY85_IMU
 // #define USE_MPU6050_IMU
 // #define USE_MPU9150_IMU
-// #define USE_MPU9250_IMU
+#define USE_MPU9250_IMU
 // #define USE_QMI8658_IMU
-// #define USE_HMC5883L_MAG
+#define USE_HMC5883L_MAG
 // #define USE_AK8963_MAG
 // #define USE_AK8975_MAG
 // #define USE_AK09918_MAG
@@ -93,35 +93,35 @@ ROBOT ORIENTATION
 
 // ENCODER PINS
 // Note: encoder pins must be consecutive (e.g. 2 and 3, 10 and 11 etc.)
-#define MOTOR1_ENCODER_A  6
-#define MOTOR1_ENCODER_B  7
+#define MOTOR1_ENCODER_A  20
+#define MOTOR1_ENCODER_B  21
 
-#define MOTOR2_ENCODER_A 10
-#define MOTOR2_ENCODER_B 11
+#define MOTOR2_ENCODER_A 18
+#define MOTOR2_ENCODER_B 19
 
-#define MOTOR3_ENCODER_A 20
-#define MOTOR3_ENCODER_B 21
+#define MOTOR3_ENCODER_A 8
+#define MOTOR3_ENCODER_B 9
 
-#define MOTOR4_ENCODER_A 2
-#define MOTOR4_ENCODER_B 3
+#define MOTOR4_ENCODER_A 10
+#define MOTOR4_ENCODER_B 11
 
 // MOTOR PINS
 #ifdef USE_GENERIC_2_IN_MOTOR_DRIVER
-  #define MOTOR1_PWM 12
-  #define MOTOR1_IN_A 13
-  #define MOTOR1_IN_B 14
+  #define MOTOR1_PWM 16
+  #define MOTOR1_IN_A 11
+  #define MOTOR1_IN_B 12
 
-  #define MOTOR2_PWM 15
-  #define MOTOR2_IN_A 16
-  #define MOTOR2_IN_B 17
+  #define MOTOR2_PWM 17
+  #define MOTOR2_IN_A 18
+  #define MOTOR2_IN_B 19
 
-  #define MOTOR3_PWM 18
-  #define MOTOR3_IN_A 19
-  #define MOTOR3_IN_B 8
+  #define MOTOR3_PWM 6
+  #define MOTOR3_IN_A 7
+  #define MOTOR3_IN_B 3
 
-  #define MOTOR4_PWM 22
-  #define MOTOR4_IN_A 26
-  #define MOTOR4_IN_B 27
+  #define MOTOR4_PWM 2
+  #define MOTOR4_IN_A 1
+  #define MOTOR4_IN_B 0
 
   #define PWM_MAX pow(2, PWM_BITS) - 1
   #define PWM_MIN -PWM_MAX
